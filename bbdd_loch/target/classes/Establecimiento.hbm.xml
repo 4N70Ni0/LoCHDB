@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ad_proyecto.bbdd_loch.Establecimiento" table="tbl_establecimiento">
+        
+        <id name="id" type="int" column="cod_estab">
+            <generator class="assigned" />
+        </id>
+        
+        <!-- name= se refiere al atributo de la clase y column= al atributo de la tabla en MariaDB -->
+        <property name="nombre" type="string" column="nombre" />
+        <property name="personasActuales" type="int" column="personas_actuales" />
+        <property name="aforoMaximo" type="int" column="aforo_maximo" />
+        <property name="ubicacion" type="string" column="ubicacion" />
+        
+        <!-- Relación (1):N con Ticket -->
+        <!-- inverse: Estab. guarda la clave de Usuario; lazy: recuperar datos cuando se vayan a usar; fetch: tipo de recuperacioń; -->
+        <set name="tickets" inverse="true" lazy="true" cascade="all" fetch="select" >
+            <!-- column= clave a propagar a Ticket -->
+            <key column="prop_cod_estab" not-null="true" />
+            <!-- Relación con la Ticket.class -->
+            <one-to-many class="com.ad_proyecto.bbdd_loch.Ticket" />
+        </set>
+        
+        <!-- Relación N:M con Usuario a través de la tabla "usr_buscar_estab" -->
+        <!-- name ==> nombre del atributo Set de Usuario en Establecimiento.class 
+             table ==> tabla-relacional con tbl_usuario
+        -->
+        <set name="usuarios" cascade="all" table="usr_buscar_estab">
+            <!-- column ==> nombre de la pk de tbl_establecimiento en la tabla usr_buscar_estab --> 
+            <key column="ube_cod_estab" />
+            <!-- class ==> clase con la que se relaciona
+                 column ==> nombre de la pk de tbl_usuario en la tabla usr_buscar_estab 
+            -->
+            <many-to-many class="com.ad_proyecto.bbdd_loch.Usuario" column="ube_cod_usr" />
+        </set>
+        
+        <!-- Relación 1:(N) con Usuario -->
+        <!-- name ==> nombre del atributo de Usuario en Establecimiento.class
+             class ==> clase con la que se relaciona
+             column ==> clave propagada de la tabla tbl_establecimiento
+        -->
+        <many-to-one name="usuario" class="com.ad_proyecto.bbdd_loch.Usuario" column="prop_cod_usr" not-null="false" />
+         
+    </class>
+</hibernate-mapping>

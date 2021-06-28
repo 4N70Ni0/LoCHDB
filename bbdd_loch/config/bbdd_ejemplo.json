@@ -1,0 +1,71 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "correo": "antonio@gmail.com",
+      "contrasenia": "1234",
+      "ubicacion": "90,90"
+    },
+    {
+      "id": 2,
+      "correo": "miguel@gmail.com",
+      "contrasenia": "1234",
+      "ubicacion": "80,80"
+    },
+    {
+      "id": 3,
+      "correo": "paco@gmail.com",
+      "contrasenia": "1234",
+      "ubicacion": "70,70"
+    },
+    {
+      "id": 4,
+      "correo": "salvador@gmail.com",
+      "contrasenia": "1234",
+      "ubicacion": "60,60"
+    },
+    {
+      "id": 5,
+      "correo": "estefano@gmail.com",
+      "contrasenia": "1234",
+      "ubicacion": "50,50"
+    }
+  ],
+  "establecimientos": [
+    {
+      "id": 1,
+      "nombre": "Pepito",
+      "personasActuales": 5,
+      "aforoMaximo": 10,
+      "ubicacion": "100,100"
+    },
+    {
+      "id": 2,
+      "nombre": "Pipo",
+      "personasActuales": 4,
+      "aforoMaximo": 20,
+      "ubicacion": "200,200"
+    },
+    {
+      "id": 3,
+      "nombre": "Yadda Yadda",
+      "personasActuales": 15,
+      "aforoMaximo": 20,
+      "ubicacion": "300,300"
+    },
+    {
+      "id": 4,
+      "nombre": "DohLo",
+      "personasActuales": 34,
+      "aforoMaximo": 200,
+      "ubicacion": "500,500"
+    },
+    {
+      "id": 5,
+      "nombre": "Tmuem",
+      "personasActuales": 5,
+      "aforoMaximo": 5,
+      "ubicacion": "555,555"
+    }
+  ]
+}

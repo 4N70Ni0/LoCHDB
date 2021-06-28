@@ -1,0 +1,11 @@
+<tema>
+	<!-- Se aplica a todo lo que no sea ni botones ni cuadros de texto -->
+	<!--   0                    1 -->
+	<frame background="#004074" foreground="#FFFFFF" />
+	<!-- Se aplica a todos los cuadros de texto -->
+	<!-- 2                    3 -->
+	<txt background="#000000" foreground="#FFFFFF" />
+	<!-- Se aplica a todos los botones -->
+	<!-- 4                    5 -->
+	<btn background="#001C44" foreground="#FFFFFF" />
+</tema>
