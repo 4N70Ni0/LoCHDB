@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mariadb://localhost:3306/lochdb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">secret</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MariaDB103Dialect</property>
+        
+        <mapping resource="Usuario.hbm.xml" />
+        <mapping resource="Establecimiento.hbm.xml" />
+        <mapping resource="Ticket.hbm.xml" />
+
+    </session-factory>
+</hibernate-configuration>

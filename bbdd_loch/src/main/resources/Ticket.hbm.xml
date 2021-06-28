@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ad_proyecto.bbdd_loch.Ticket" table="tbl_ticket">
+        
+        <id name="id" type="int" column="cod_ticket">
+            <generator class="assigned" />
+        </id>
+        
+        <!-- Relación N:M con Usuario a través de la tabla "usr_coger_ticket" -->
+        <!-- name ==> nombre del atributo Set de Usuario en Ticket.class 
+             table ==> tabla-relacional con tbl_usuario
+        -->
+        <set name="usuarios" cascade="all" table="usr_coger_ticket">
+            <key column="uct_cod_ticket" />
+            <many-to-many class="com.ad_proyecto.bbdd_loch.Usuario" column="uct_cod_usr" />
+        </set>
+        
+        <!-- Relación 1:(N) con Establecimiento -->
+        <!-- name ==> nombre del atributo de Establecimiento en Ticket.class
+             class ==> clase con la que se relaciona
+             column ==> clave propagada de la tabla tbl_establecimiento
+        -->
+        <many-to-one name="estab" class="com.ad_proyecto.bbdd_loch.Establecimiento" column="prop_cod_estab" not-null="true" />
+    </class>
+</hibernate-mapping>

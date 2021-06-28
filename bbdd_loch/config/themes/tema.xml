@@ -1,0 +1,12 @@
+<!-- Si hay dos etiquetas iguales, tomará en cuenta la primera -->
+<tema>
+	<!-- Se aplica a todo lo que no sea ni botones ni cuadros de texto -->
+	<!--   0                    1 -->
+	<frame background="#000000" foreground="#FFFFFF" />
+	<!-- Se aplica a todos los cuadros de texto -->
+	<!-- 2                    3 -->
+	<txt background="#000000" foreground="#FFFFFF" />
+	<!-- Se aplica a todos los botones -->
+	<!-- 4                    5 -->
+	<btn background="#00FF00" foreground="#FFFFFF" />
+</tema>

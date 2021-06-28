@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.ad_proyecto.bbdd_loch.Usuario" table="tbl_usuario">
+        
+        <id name="id" type="int" column="cod_usr">
+            <generator class="assigned" />
+        </id>
+        
+        <property name="correo" type="string" column="correo" />
+        <property name="contrasenia" type="string" column="contrasenia" />
+        <property name="ubicacion" type="string" column="ubicacion" />
+        
+        <!-- Relación N:M con Ticket a través de la tabla "usr_coger_ticket" -->
+        <!-- name ==> nombre del atributo Set de Ticket en Usuario.class 
+             table ==> tabla-relacional con tbl_ticket
+        -->
+        <set name="tickets" cascade="all" table="usr_coger_ticket">
+            <key column="uct_cod_usr" />
+            <many-to-many class="com.ad_proyecto.bbdd_loch.Ticket" column="uct_cod_ticket" />
+        </set>
+        
+        <!-- Relación N:M con Establecimiento a través de la tabla "usr_buscar_estab" -->
+        <!-- name ==> nombre del atributo Set de Establecimiento en Usuario.class 
+             table ==> tabla-relacional con tbl_establecimiento
+        -->
+        <set name="mtm_estabs" cascade="all" table="usr_buscar_estab">
+            <key column="ube_cod_usr" />
+            <many-to-many class="com.ad_proyecto.bbdd_loch.Establecimiento" column="ube_cod_estab" />
+        </set>
+        
+        <!-- Relación (1):N con Establecimiento -->
+        <!-- inverse: Estab. guarda la clave de Usuario; lazy: recuperar datos cuando se vayan a usar; fetch: tipo de recuperacioń; -->
+        <!-- name ==> nombre del Set de Usuario.class -->
+        <set name="otm_estabs" inverse="true" lazy="true" cascade="all" fetch="select" >
+            <!-- column ==> clave propagada en tbl_establecimiento -->
+            <key column="prop_cod_usr" not-null="true" />
+            <!-- Clase con la que se relaciona: Establecimiento.class -->
+            <one-to-many class="com.ad_proyecto.bbdd_loch.Establecimiento" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
